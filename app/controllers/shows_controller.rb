@@ -2,7 +2,9 @@ class ShowsController < ApplicationController
   before_action :find_show, only:[:show, :edit, :update, :destroy]
 
   def index
+    @shows = Show.all
   end
+  
   def show  
   end
 
@@ -12,11 +14,11 @@ class ShowsController < ApplicationController
 
   def create
     @show = Show.new(show_params)
-
     respond_to do |format|
       if @show.save
         format.html { redirect_to @show, notice: 'Show was successfully created.' }
       else
+        
         format.html {render :new, notice: 'errors, bitch.' }
       end
     end
