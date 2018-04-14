@@ -1,0 +1,18 @@
+<%= form_for(@show) do |f| %>
+
+  <div class="field"> <%= f.label :date %><br>
+  <%= f.date_select(:date, :order => [:month, :day, :year]) %></div>
+
+  <div class="field"><%= f.label :start_time %><br>
+  <%= f.time_select :start_time %></div>
+
+  <div class="field"><%= f.label :confirmed %><br>
+  <%= f.check_box :confirmed %></div>
+
+  <div class="field"><%= f.label :notes %><br>
+  <%= f.text_area :notes %></div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
