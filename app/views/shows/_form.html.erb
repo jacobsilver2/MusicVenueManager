@@ -1,4 +1,4 @@
-<%= form_for(@show, url: {action: "create" }) do |f| %>
+<%= form_for @show do |f| %>
 
   <div class="field"> <%= f.label :date %><br>
   <%= f.date_select(:date, :order => [:month, :day, :year]) %></div>
@@ -11,6 +11,10 @@
 
   <div class="field"><%= f.label :notes %><br>
   <%= f.text_area :notes %></div>
+
+    <div class="field">
+    <%= f.hidden_field :user_id, :value => @user.id %>
+  </div>
   
   <div class="actions">
     <%= f.submit %>
