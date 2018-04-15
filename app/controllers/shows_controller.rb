@@ -20,7 +20,7 @@ class ShowsController < ApplicationController
       if @show.save
         format.html { redirect_to show_path(@show), notice: 'Show was successfully created.' }
       else
-        format.html {render :new, notice: 'errors, bitch.' }
+        format.html {render :new, notice: 'Errors were found.' }
       end
     end
   end
@@ -38,8 +38,15 @@ class ShowsController < ApplicationController
     end
   end
 
+  def destroy
+    @show.destroy
+    respond_to do |format|
+      format.html { redirect_to shows_path , notice: 'Show was successfully deleted.' }
+    end
+  end
+
   private
-  
+
   def find_show
     @show = Show.find(params[:id])
   end

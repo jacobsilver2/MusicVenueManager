@@ -6,8 +6,12 @@
     <p><strong>Confirmed?:</strong> <%= @show.format_confirmed %></p>
     <p><strong>Notes:</strong> <%= @show.notes %> </p>
     <% if user_signed_in? %>
-      <%= link_to 'Edit Show', [:edit, @show] %></p>
+      <p><%= link_to 'Add Acts', new_show_act_path(@show), method: :new  %></p>
+      <p><%= link_to 'Edit Date, time, or add notes', [:edit, @show] %></p>
+      <p><%= link_to 'Delete Show', show_path(@show), method: :delete  %></p>
     <% end %>
     <%= link_to 'Back', shows_path %></p>
   </div>
 </div>
+
+

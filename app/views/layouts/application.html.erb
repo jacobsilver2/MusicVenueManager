@@ -27,7 +27,6 @@
               <li><%= "Hello, #{current_user.name}!" %></li>
               
               <li><%= link_to "Add a Show", new_user_show_path(current_user) %></li>
-              <li><%= link_to "Add a Band to the DB", new_user_act_path(current_user) %></li>
               <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "Sign In", new_user_session_path %></li>
