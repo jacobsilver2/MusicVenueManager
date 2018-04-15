@@ -6,7 +6,8 @@ class User < ApplicationRecord
          
   validates_presence_of :name
   has_many :shows
-  has_many :acts, through: :shows
+  # not needed
+  # has_many :acts, through: :shows
 
 
 end

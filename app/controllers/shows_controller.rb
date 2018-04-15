@@ -10,8 +10,7 @@ class ShowsController < ApplicationController
 
   def new
     @show = Show.new
-    @user = current_user
-    
+    @user = current_user 
   end
 
   def create
@@ -40,6 +39,7 @@ class ShowsController < ApplicationController
   end
 
   private
+  
   def find_show
     @show = Show.find(params[:id])
   end

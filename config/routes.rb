@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   
   resources :users do
     resources :shows, :only => [:new]
+  end
+  
+  resources :shows do
     resources :acts, :only => [:new]
   end
   
