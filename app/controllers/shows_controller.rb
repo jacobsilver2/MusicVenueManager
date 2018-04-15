@@ -19,9 +19,9 @@ class ShowsController < ApplicationController
     @show.user_id = current_user.id if current_user
     respond_to do |format|
       if @show.save
-        format.html { redirect_to show_path(@show), message: 'Show was successfully created.' }
+        format.html { redirect_to show_path(@show), notice: 'Show was successfully created.' }
       else
-        format.html {render :new, message: 'errors, bitch.' }
+        format.html {render :new, notice: 'errors, bitch.' }
       end
     end
   end

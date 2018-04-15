@@ -1,4 +1,8 @@
+<ul>
 <% @shows.each do |s| %>
-  <%= s.date %>
-  <%= s.start_time %>
+  <li>
+  <%= s.format_date %>
+  <%= s.format_time %>
+  </li>
 <% end %>
+<ul>
