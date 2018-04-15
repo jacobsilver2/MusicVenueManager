@@ -26,7 +26,17 @@ class ShowsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def update
+    respond_to do |format|
+      if @show.update(show_params)
+        format.html { redirect_to @show, notice: 'Show was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   private

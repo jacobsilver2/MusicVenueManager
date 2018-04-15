@@ -1,8 +1,7 @@
 <ul>
 <% @shows.each do |s| %>
   <li>
-  <%= s.format_date %>
-  <%= s.format_time %>
+<%= link_to "#{s.format_date}", s %>
   </li>
 <% end %>
 <ul>
