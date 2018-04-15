@@ -1,7 +1,7 @@
 class Show < ApplicationRecord
   belongs_to :user
   # perhaps this is not needed?
-  has_many :acts, through: :shows_acts
+  has_and_belongs_to_many :acts
   
   validates_uniqueness_of :date, :message => "That date is already taken.  Please choose another."
   validates_presence_of :start_time, :message => "Please enter a valid start time"
