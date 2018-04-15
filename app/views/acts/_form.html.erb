@@ -20,16 +20,19 @@
   <%= f.text_field :website %></div>
 
   <div class="field"><%= f.label :blurb %><br>
-  <%= f.text_field :blurb %></div>
+  <%= f.text_area :blurb %></div>
 
   <div class="field"><%= f.label :contact_name %><br>
-  <%= f.text_area :contact_name %></div>
+  <%= f.text_field :contact_name %></div>
 
   <div class="field"><%= f.label :contact_email %><br>
   <%= f.email_field :contact_email %></div>
   
   <div class="field"><%= f.label :notes %><br>
   <%= f.text_area :notes %></div>
+
+  
+  <%= f.hidden_field :show_id, :value => @show.id %>
   
   <div class="actions">
     <%= f.submit %>
