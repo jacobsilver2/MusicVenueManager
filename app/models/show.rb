@@ -36,6 +36,8 @@ class Show < ApplicationRecord
   end
 
   def self.this_week
+    oneWeek = Date.today + 7
+    Show.all.select{|show| show.date < oneWeek }
   end
 
 

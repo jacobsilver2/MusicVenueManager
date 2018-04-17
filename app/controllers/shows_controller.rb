@@ -5,7 +5,8 @@ class ShowsController < ApplicationController
     @shows = Show.shows_by_date
   end
   
-  def show  
+  def show 
+     
   end
 
   def new

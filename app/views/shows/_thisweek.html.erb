@@ -1,0 +1,5 @@
+<ul>
+<%= Show.this_week.map do |show| %>
+  <li><%= link_to "#{show.format_date}", show %></li>
+<% end %>
+</ul>
