@@ -29,7 +29,10 @@ class Show < ApplicationRecord
     Show.all.sort{ |a,b| a.date <=> b.date}
   end
 
+
   def self.today
+    t = Date.today
+    Show.all.detect{ |show| show.date == t}
   end
 
   def self.this_week
