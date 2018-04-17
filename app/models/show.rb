@@ -7,23 +7,27 @@ class Show < ApplicationRecord
   validates_presence_of :start_time, :message => "Please enter a valid start time"
   validates_presence_of :date, :message => "Please enter a valid date"
 
+  
   def format_date
     self.date.strftime("%B %e, %Y")
   end
-
+  
   def format_time
     self.start_time.strftime("%l:%M %p")
   end
-
+  
   def format_confirmed
     if self.confirmed
       "Yes"
     else
       "No"
     end
-
   end
-
+  
+  
+  def self.shows_by_date
+    Show.all.sort{ |a,b| a.date <=> b.date}
+  end
 
   def self.today
   end

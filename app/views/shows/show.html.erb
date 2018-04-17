@@ -3,10 +3,20 @@
   <div class="info">
     <p><strong>Date:</strong> <%= @show.format_date %></p>
     <p><strong>Start Time:</strong> <%= @show.format_time %></p>
+    <p><strong>Acts:</strong></p>
+    <ul>
+    <% if @show.acts.count > 0 %>
+      <% @show.acts.each do |act| %>
+        <li><%= link_to "#{act.name}", act_path(act) %></li>
+      <% end %>
+    <% else %>
+      <li><p>No acts yet!</p></li>
+    <% end %></ul>
+
     <p><strong>Confirmed?:</strong> <%= @show.format_confirmed %></p>
     <p><strong>Notes:</strong> <%= @show.notes %> </p>
     <% if user_signed_in? %>
-      <p><%= link_to 'Add Act', new_show_act_path(@show.id)  %></p>
+      <p><%= link_to 'Add Act', new_show_act_path(@show.id)  %>
       <p><%= link_to 'Edit Date, time, or add notes', [:edit, @show] %></p>
       <p><%= link_to 'Delete Show', show_path(@show), method: :delete  %></p>
     <% end %>

@@ -9,6 +9,7 @@ class ActsController < ApplicationController
 
   def create  
     @act = Act.new(act_params)
+    # @act.name = params[:name] unless params[:name].empty?
     @show = Show.find(params[:act][:show_id])
     
     respond_to do |format|
@@ -18,6 +19,13 @@ class ActsController < ApplicationController
       else
         format.html {render :new, notice: 'Errors were found.' }
       end
+    end
+  end
+
+  def destroy
+    @act.destroy
+    respond_to do |format|
+      format.html {redirect_to shows_path, notice: 'Act was successfully deleted. '}
     end
   end
 

@@ -2,7 +2,7 @@ class ShowsController < ApplicationController
   before_action :find_show, only:[:show, :edit, :update, :destroy]
 
   def index
-    @shows = Show.all
+    @shows = Show.shows_by_date
   end
   
   def show  
