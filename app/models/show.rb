@@ -15,6 +15,10 @@ class Show < ApplicationRecord
   def format_time
     self.start_time.strftime("%l:%M %p")
   end
+
+  def self.confirmed_shows_by_date
+    Show.all.select{|show| show.confirmed}.sort{|a,b| a.date <=> b.date}
+  end
   
   def format_confirmed
     if self.confirmed
@@ -30,15 +34,28 @@ class Show < ApplicationRecord
   end
 
 
-  def self.today
+  def self.today_confirmed
+    t = Date.today
+    Show.all.detect{ |show| (show.date == t) && show.confirmed}
+  end
+
+  def self.today_all
     t = Date.today
     Show.all.detect{ |show| show.date == t}
   end
 
-  def self.this_week
+  def self.this_week_confirmed
     oneWeek = Date.today + 7
-    Show.all.select{|show| show.date < oneWeek }
+    Show.all.select{|show| (show.date < oneWeek) && show.confirmed }
   end
+
+  def self.this_week_all
+    oneWeek = Date.today + 7
+    Show.all.select{|show| show.date < oneWeek}
+  end
+
+
+  
 
 
 end

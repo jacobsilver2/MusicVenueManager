@@ -2,11 +2,18 @@ class ShowsController < ApplicationController
   before_action :find_show, only:[:show, :edit, :update, :destroy]
 
   def index
-    @shows = Show.shows_by_date
+    if user_signed_in?
+      @shows = Show.shows_by_date
+      @showToday = Show.today_all
+      @showsThisWeek = Show.this_week_all
+    else
+      @shows = Show.confirmed_shows_by_date
+      @showToday = Show.today_confirmed
+      @showsThisWeek = Show.this_week_confirmed
+    end
   end
   
-  def show 
-     
+  def show  
   end
 
   def new

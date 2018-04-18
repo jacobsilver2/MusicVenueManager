@@ -1,13 +1,17 @@
-<% if Show.today %>
-  <p><strong>Today's Show:</strong></p>
-  <p><%= Show.today.format_date %> - <%= Show.today.format_time %></p>
-  <ul>
-  <% if Show.today.acts.count > 0 %>
-    <% Show.today.acts.each do |act| %>
-      <li><%= link_to "#{act.name}", act_path(act) %></li>
+
+
+  <% if @showToday %>
+    <p><strong>Today's Show:</strong></p>
+    <p><%= @showToday.format_date %> - <%= @showToday.format_time %></p>
+    <ul>
+    <% if @showToday.acts.count > 0 %>
+      <% @showToday.acts.each do |act| %>
+        <li><%= link_to "#{act.name}", act_path(act) %></li>
+      <% end %>
+    </ul>
+    <% else %>
+      <p>There are no currently scheduled acts.</p>
     <% end %>
-  </ul>
-  <% else %>
-    <p>There are no currently scheduled acts.</p>
   <% end %>
-<% end %>
+
+
