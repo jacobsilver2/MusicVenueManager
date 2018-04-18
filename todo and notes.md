@@ -1,5 +1,7 @@
 TODO
 
+EVENTUALLY SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY THROUGH RELATIONSHIP !!!
+
 
 SHOWS
 When adding bands to a show, provide the option to add an act already 
