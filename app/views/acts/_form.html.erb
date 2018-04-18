@@ -14,8 +14,11 @@
   
 
 <%= form_for @act do |f| %>
+  <p><strong>Choose an already existing act:</strong></p>
+  <%= f.collection_select :id, Act.all, :id, :name %>
 
-  <p><strong>Or create a new act</strong></p>
+
+  <p><strong>Or create a new act:</strong></p>
   <div class="field"> <%= f.label :name %><br>
   <%= f.text_field :name %></div>
 

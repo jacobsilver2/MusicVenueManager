@@ -8,10 +8,9 @@ class ActsController < ApplicationController
   end
 
   def create  
+    raise params.inspect
     @act = Act.new(act_params)
-    # @act.name = params[:name] unless params[:name].empty?
     @show = Show.find(params[:act][:show_id])
-    
     respond_to do |format|
       if @act.save
         @show.acts << @act
