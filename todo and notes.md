@@ -14,3 +14,4 @@ QUESTIONS FOR LUISA
 [] How can I clean up my Act create method to allow either an act to get added from a collection or create a new act?  Right now it feels a bit crude
 [] How can I bring back my Act validations and still allow the collection of already existing Acts (because hitting submit after choosing from the collection sends a params hash full of empty values which mostly all fail validations)
 [] A show can't have the same band twice.  How do I make a validation for that?
+[] Why is my connection not secure?

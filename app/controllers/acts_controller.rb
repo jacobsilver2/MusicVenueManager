@@ -10,7 +10,7 @@ class ActsController < ApplicationController
   def create  
     @show = Show.find(params[:act][:show_id])
     
-    if params[:act][:collectionName]
+    if params[:act][:collectionName] != ""
       @act = Act.find(params[:act][:collectionName])
       @show.acts << @act
       redirect_to show_path(@show)
