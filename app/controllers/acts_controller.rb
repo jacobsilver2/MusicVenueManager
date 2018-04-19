@@ -11,6 +11,7 @@ class ActsController < ApplicationController
     @show = Show.find(params[:act][:show_id])
     
     if params[:act][:collectionName] != ""
+
       @act = Act.find(params[:act][:collectionName])
       @show.acts << @act
       redirect_to show_path(@show)
@@ -20,11 +21,27 @@ class ActsController < ApplicationController
     end
     
     respond_to do |format|
+      
       if @act.save
         @show.acts << @act
         format.html { redirect_to show_path(@show), notice: 'Act was successfully added.' }
       else
         format.html {render :new, notice: 'Errors were found.' }
+      end
+    end
+  end
+
+  def edit
+    #is this ok?
+    # @show = @act.shows.first
+  end
+
+  def update
+    respond_to do |format|
+      if @act.update(act_params)
+        format.html { redirect_to @act, notice: 'Act was successfully updated.' }
+      else
+        format.html { render :edit }
       end
     end
   end
