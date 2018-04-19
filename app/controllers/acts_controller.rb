@@ -8,9 +8,17 @@ class ActsController < ApplicationController
   end
 
   def create  
-    raise params.inspect
-    @act = Act.new(act_params)
     @show = Show.find(params[:act][:show_id])
+    
+    if params[:act][:collectionName]
+      @act = Act.find(params[:act][:collectionName])
+      @show.acts << @act
+      redirect_to show_path(@show)
+      return
+    else
+      @act = Act.new(act_params)
+    end
+    
     respond_to do |format|
       if @act.save
         @show.acts << @act
@@ -35,7 +43,7 @@ class ActsController < ApplicationController
   end
 
   def act_params
-    params.require(:act).permit(:name, :website, :blurb, :contact_name, :contact_email, :notes)
+    params.require(:act).permit(:name, :website, :blurb, :contact_name, :contact_email, :notes, :collectionName)
   end
 
 
