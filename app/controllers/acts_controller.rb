@@ -14,16 +14,19 @@ class ActsController < ApplicationController
 
       @act = Act.find(params[:act][:collectionName])
       @show.acts << @act
+
       redirect_to show_path(@show)
       return
     else
       @act = Act.new(act_params)
     end
-    
+
     respond_to do |format|
       
       if @act.save
         @show.acts << @act
+        # working on this
+        set_set_order(@act, @show)
         format.html { redirect_to show_path(@show), notice: 'Act was successfully added.' }
       else
         format.html {render :new, notice: 'Errors were found.' }
@@ -32,8 +35,6 @@ class ActsController < ApplicationController
   end
 
   def edit
-    #is this ok?
-    # @show = @act.shows.first
   end
 
   def update
@@ -61,6 +62,20 @@ class ActsController < ApplicationController
 
   def act_params
     params.require(:act).permit(:name, :website, :blurb, :contact_name, :contact_email, :notes, :collectionName)
+  end
+
+  def set_set_order(act, show)
+     # get the specific line on ActShow
+     actshow = ActShow.where("act_id = ? and show_id = ?", act.id, show.id).first
+     # get all the acts of that specific show
+     showInstances = ActShow.where("show_id = ?", show.id)
+     if showInstances.count == 1
+       actshow.set_order = 1
+     else
+       # get the highest value in set_order (stripping the newly added nil value and add the value plus one to actshow)
+       actshow.set_order = (showInstances.map{|show| show.set_order}.reject{|item| item.nil?}.max) + 1
+     end
+     actshow.save
   end
 
 

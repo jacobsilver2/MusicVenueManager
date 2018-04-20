@@ -1,7 +1,7 @@
 TODO
 
 
-[] SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY  THROUGH RELATIONSHIP !!!
+[x] SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY  THROUGH RELATIONSHIP !!!
 [] Add an authentication method for Facebook
 [] Times are reporting incorrect values.
 
@@ -10,9 +10,10 @@ TODO
 
 QUESTIONS FOR LUISA
 
-[] Advice on refactoring to support a has many through?
-  [] create a join model called act_show, that is [] used in a has many through relationship
-  act order
+[x] Advice on refactoring to support a has many through?
+  [x] create a join model called act_show, that is used in a has many through relationship
+  [] act order 
+    for this project (at least to start), the set order will be in order of when they were created, without the ability to edit set order.
 
 
 [x] How can I clean up my Act create method to allow either an act to get added from a collection or create a new act?  Right now it feels a bit crude

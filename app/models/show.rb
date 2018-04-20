@@ -1,6 +1,5 @@
 class Show < ApplicationRecord
   belongs_to :user
-  # has_and_belongs_to_many :acts
   has_many :act_shows
   has_many :acts, :through => :act_shows
    
