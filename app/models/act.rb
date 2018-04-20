@@ -1,5 +1,8 @@
 class Act < ApplicationRecord
-  has_and_belongs_to_many :shows  
+  # has_and_belongs_to_many :shows
+  has_many :act_shows
+  has_many :shows, :through => :act_shows  
+  
   validates :name,
             :presence => {:message => "Name can't be blank."},
             :uniqueness => {:message => "Name already exists."}
