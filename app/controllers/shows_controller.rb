@@ -14,7 +14,6 @@ class ShowsController < ApplicationController
   end
   
   def show  
-    
   end
 
   def new

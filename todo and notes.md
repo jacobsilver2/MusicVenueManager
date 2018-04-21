@@ -2,10 +2,10 @@ TODO
 
 
 [x] SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY  THROUGH RELATIONSHIP !!!
-[] Refactor new/edit form partial(s) to use Luisa's technique and only use one form.
+[x] Refactor new/edit form partial(s) to use Luisa's technique and only use one form.
+[x] Show show page should list the set order based on the join model
 [] Add an authentication method for Facebook.  CHANGE TO GITHUB.  IT'S EASIER!
 [] Times are reporting incorrect values.
-[] Show show page should list the set order based on the join model
 
 
 
@@ -27,10 +27,11 @@ look at rails guide for associations - uniqueness with scope option
 
 [x] Why is my connection not secure?
 
-[] Is there a better solution with the form partials for new/edit act?  I had to use two because I didn't want the option of selecting a new act while in the edit page.
+[x] Is there a better solution with the form partials for new/edit act?  I had to use two because I didn't want the option of selecting a new act while in the edit page.
   if @act.new_record ...
 
-[] No go so far on Facebook integration with Devise.
+[x] No go so far on Facebook integration with Devise.
+
 
 
 

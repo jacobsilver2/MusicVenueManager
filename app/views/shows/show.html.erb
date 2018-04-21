@@ -15,7 +15,7 @@
       <li><p>No acts yet!</p></li>
     <% end %>
 
-    <p><strong>Confirmed?:</strong> <%= @show.format_confirmed %></p>
+    <p><strong>Confirmed? </strong> <%= @show.format_confirmed %></p>
     <p><strong>Notes:</strong> <%= @show.notes %> </p>
     <% if user_signed_in? %>
       <p><%= link_to 'Add Act', new_show_act_path(@show.id)  %>

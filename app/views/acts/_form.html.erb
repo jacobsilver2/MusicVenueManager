@@ -11,11 +11,13 @@
 <% end %>
  
 <%= form_for(@act, :html => {:name => "ActForm"}) do |f| %>
-  <p><strong>Choose an already existing act:</strong></p>
-  <%= f.collection_select :collectionName, Act.all, :id, :name, include_blank: 'Select an act' %>
-  
+  <% if @act.new_record? %>
+    <p><strong>Choose an already existing act:</strong></p>
+    <%= f.collection_select :collectionName, Act.all, :id, :name, include_blank: 'Select an act' %>
+    <%= f.hidden_field :show_id, :value => @show.id %>
+    <p><strong>Or create a new act:</strong></p>
+  <% end %>
 
-  <p><strong>Or create a new act:</strong></p>
   <div class="field"> <%= f.label :name %><br>
   <%= f.text_field :name %></div>
 
@@ -35,7 +37,6 @@
   <%= f.text_area :notes %></div>
 
   
-  <%= f.hidden_field :show_id, :value => @show.id %>
   
   <div class="actions">
     <%= f.submit %>
