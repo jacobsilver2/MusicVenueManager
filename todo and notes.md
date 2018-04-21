@@ -4,7 +4,8 @@ TODO
 [x] SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY  THROUGH RELATIONSHIP !!!
 [x] Refactor new/edit form partial(s) to use Luisa's technique and only use one form.
 [x] Show show page should list the set order based on the join model
-[] Add an authentication method for Facebook.  CHANGE TO GITHUB.  IT'S EASIER!
+[x] Add an authentication method for Facebook.
+[] Consider adding first_name and last_name instead of just :name.  That way it'll work with facebook better.
 [] Times are reporting incorrect values.
 
 
