@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/shows/:id/destroy', to: 'shows#destroy'
   get '/acts/:id/destroy', to: 'shows#destroy'
   
-  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, :controllers => { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
 
   resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create]
   resources :acts, :only => [:index, :show, :edit, :update, :destroy, :create]
