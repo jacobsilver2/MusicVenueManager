@@ -1,0 +1,7 @@
+<% @show.acts.each do |act| %>
+  <strong><%= ActShow.setOrder(act, @show) %> : <%= link_to "#{act.name}", act.website %></strong><br>
+  <%= act.blurb %><br>
+  <br>
+<% end %>
+
+<%= link_to "Back", show_path(@show) %>

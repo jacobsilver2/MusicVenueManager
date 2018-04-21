@@ -11,14 +11,14 @@ Rails.application.routes.draw do
 		root 'devise/sessions#new'
 	end
   resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create]
-  resources :acts, :only => [:index, :show, :edit, :update, :destroy, :create]
+  resources :acts, :only => [:show, :edit, :update, :destroy, :create]
   
   resources :users do
     resources :shows, :only => [:new]
   end
   
   resources :shows do
-    resources :acts, :only => [:new]
+    resources :acts, :only => [:new, :index]
   end
   
 end

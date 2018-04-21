@@ -3,7 +3,7 @@
   <div class="info">
     <p><strong>Date:</strong> <%= @show.format_date %></p>
     <p><strong>Start Time:</strong> <%= @show.format_time %></p>
-    <p><strong>Acts:</strong></p>
+    <p><strong><%= link_to "Acts:", show_acts_path(@show) %></strong></p>
     
     <% if @show.acts.count > 0 %>
       <% @show.acts.each do |act| %>

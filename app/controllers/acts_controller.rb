@@ -1,10 +1,13 @@
 class ActsController < ApplicationController
   before_action :find_act, only:[:show, :edit, :update, :destroy]
 
+  def index
+    @show = Show.find(params[:show_id])
+  end
+
   def new
     @act = Act.new
     @show = Show.find(params[:show_id])
-
   end
 
   def create  
@@ -22,10 +25,8 @@ class ActsController < ApplicationController
     end
 
     respond_to do |format|
-      
       if @act.save
         @show.acts << @act
-        # working on this
         set_set_order(@act, @show)
         format.html { redirect_to show_path(@show), notice: 'Act was successfully added.' }
       else
