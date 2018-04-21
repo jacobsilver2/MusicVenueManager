@@ -14,7 +14,7 @@ class ActsController < ApplicationController
 
       @act = Act.find(params[:act][:collectionName])
       @show.acts << @act
-
+      set_set_order(@act, @show)
       redirect_to show_path(@show)
       return
     else

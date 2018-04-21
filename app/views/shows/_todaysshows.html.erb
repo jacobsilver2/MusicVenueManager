@@ -6,6 +6,7 @@
       <% @showToday.acts.each do |act| %>
         <%= ActShow.setOrder(act, @showToday) %>:
         <%= link_to "#{act.name}", act_path(act) %>
+        <br>
       <% end %>
     
     <% else %>

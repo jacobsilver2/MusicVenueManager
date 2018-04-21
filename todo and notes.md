@@ -5,7 +5,6 @@ TODO
 [x] Refactor new/edit form partial(s) to use Luisa's technique and only use one form.
 [x] Show show page should list the set order based on the join model
 [x] Add an authentication method for Facebook.
-[] Consider adding first_name and last_name instead of just :name.  That way it'll work with facebook better.
 [] Times are reporting incorrect values.
 
 
@@ -31,7 +30,7 @@ look at rails guide for associations - uniqueness with scope option
 [x] Is there a better solution with the form partials for new/edit act?  I had to use two because I didn't want the option of selecting a new act while in the edit page.
   if @act.new_record ...
 
-[x] No go so far on Facebook integration with Devise.
+[x] No go so far on Facebook integration with Devise. DID IT.
 
 
 
