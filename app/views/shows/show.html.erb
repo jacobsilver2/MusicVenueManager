@@ -4,14 +4,16 @@
     <p><strong>Date:</strong> <%= @show.format_date %></p>
     <p><strong>Start Time:</strong> <%= @show.format_time %></p>
     <p><strong>Acts:</strong></p>
-    <ul>
+    
     <% if @show.acts.count > 0 %>
       <% @show.acts.each do |act| %>
-        <li><%= link_to "#{act.name}", act_path(act) %></li>
+          <%= ActShow.setOrder(act, @show) %>: 
+          <%= link_to "#{act.name}", act_path(act) %>
+          <br>
       <% end %>
     <% else %>
       <li><p>No acts yet!</p></li>
-    <% end %></ul>
+    <% end %>
 
     <p><strong>Confirmed?:</strong> <%= @show.format_confirmed %></p>
     <p><strong>Notes:</strong> <%= @show.notes %> </p>

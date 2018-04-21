@@ -2,8 +2,11 @@ TODO
 
 
 [x] SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY  THROUGH RELATIONSHIP !!!
-[] Add an authentication method for Facebook
+[] Refactor new/edit form partial(s) to use Luisa's technique and only use one form.
+[] Add an authentication method for Facebook.  CHANGE TO GITHUB.  IT'S EASIER!
 [] Times are reporting incorrect values.
+[] Show show page should list the set order based on the join model
+
 
 
 
@@ -12,7 +15,7 @@ QUESTIONS FOR LUISA
 
 [x] Advice on refactoring to support a has many through?
   [x] create a join model called act_show, that is used in a has many through relationship
-  [] act order 
+  [x] act order 
     for this project (at least to start), the set order will be in order of when they were created, without the ability to edit set order.
 
 
