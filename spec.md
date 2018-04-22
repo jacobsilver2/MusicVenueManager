@@ -27,6 +27,8 @@ Specs:
     validates_presence_of :start_time, :message => "Please enter a valid start time"
     validates_presence_of :date, :message => "Please enter a valid date"
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+  MISUNDERSTOOD - REFACTOR
+  
   Show#shows_by_date
   Show#today_confirmed
   Show#this_week_confirmed
@@ -39,7 +41,8 @@ Specs:
   devise
 - [x] Include third party signup/login (how e.g. Devise/OmniAuth)
   devise/omniauth/facebook
-- [] Include nested resource show or index (URL e.g. users/2/recipes)
+- [x] Include nested resource show or index (URL e.g. users/2/recipes)
+  shows/:id/acts
 - [x] Include nested resource "new" form (URL e.g. recipes/1/ingredients)
   users/:id/show/new
 - [x] Include form display of validation errors (form URL e.g. /recipes/new)

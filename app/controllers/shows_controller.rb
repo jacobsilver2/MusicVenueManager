@@ -16,12 +16,29 @@ class ShowsController < ApplicationController
   def show  
   end
 
+  def today
+    if user_signed_in?
+      @show = Show.today_all
+    else
+      @show = Show.today_confirmed
+    end
+  end
+
+  def this_week
+    if user_signed_in?
+      @shows = Show.this_week_all
+    else
+      @shows = Show.this_week_confirmed
+    end
+  end
+
   def new
     @show = Show.new
     @user = current_user 
   end
 
   def create
+    params[:show].parse_time_select! :start_time
     @show = Show.new(show_params)
     @show.user_id = current_user.id if current_user
     respond_to do |format|
@@ -37,6 +54,7 @@ class ShowsController < ApplicationController
   end
 
   def update
+    params[:show].parse_time_select! :start_time
     respond_to do |format|
       if @show.update(show_params)
         format.html { redirect_to @show, notice: 'Show was successfully updated.' }

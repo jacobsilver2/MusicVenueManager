@@ -9,8 +9,9 @@ Rails.application.routes.draw do
 	end
 	devise_scope :user do
 		root 'devise/sessions#new'
-	end
-  resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create]
+  end
+  
+  resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create, :today, :this_week]
   resources :acts, :only => [:show, :edit, :update, :destroy, :create]
   
   resources :users do
