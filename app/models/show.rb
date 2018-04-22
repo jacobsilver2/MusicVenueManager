@@ -7,6 +7,7 @@ class Show < ApplicationRecord
   validates_uniqueness_of :date, :message => "That date is already taken.  Please choose another."
   validates_presence_of :start_time, :message => "Please enter a valid start time"
   validates_presence_of :date, :message => "Please enter a valid date"
+  
 
   def format_confirmed
     if self.confirmed
@@ -23,6 +24,7 @@ class Show < ApplicationRecord
   def format_time
     self.start_time.strftime("%l:%M %p")
   end
+
 
   def self.confirmed_shows_by_date
     Show.all.select{|show| show.confirmed}.sort{|a,b| a.date <=> b.date}
@@ -44,12 +46,12 @@ class Show < ApplicationRecord
 
   def self.this_week_confirmed
     oneWeek = Date.today + 7
-    Show.all.select{|show| (show.date < oneWeek) && show.confirmed }
+    Show.all.select{|show| (show.date < oneWeek) && show.confirmed }.sort{|a,b| a.date <=> b.date}
   end
 
   def self.this_week_all
     oneWeek = Date.today + 7
-    Show.all.select{|show| show.date < oneWeek}
+    Show.all.select{|show| show.date < oneWeek}.sort{|a,b| a.date <=> b.date}
   end
 
 

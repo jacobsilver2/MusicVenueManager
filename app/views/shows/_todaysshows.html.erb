@@ -1,4 +1,4 @@
-  
+<% if @show %>
     <p><strong>Today's Show:</strong></p>
     <p><strong><%= @show.format_date %> - <%= @show.format_time %></strong></p>
     
@@ -12,6 +12,10 @@
     <% else %>
       <p>There are no currently scheduled acts.</p>
     <% end %>
+
+<% else %>
+  <p>There is no show scheduled today!</p>
+<% end %>
   
 
 

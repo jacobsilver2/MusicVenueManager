@@ -4,10 +4,10 @@ class ShowsController < ApplicationController
   def index
     if user_signed_in?
       @shows = Show.shows_by_date
-      @showsThisWeek = Show.this_week_all
+      
     else
       @shows = Show.confirmed_shows_by_date
-      @showsThisWeek = Show.this_week_confirmed
+      
     end
   end
   
@@ -17,6 +17,7 @@ class ShowsController < ApplicationController
   def today
     if user_signed_in?
       @show = Show.today_all
+      
     else
       @show = Show.today_confirmed
     end
@@ -64,6 +65,7 @@ class ShowsController < ApplicationController
 
   def destroy
     @show.destroy
+    
     respond_to do |format|
       format.html { redirect_to shows_path , notice: 'Show was successfully deleted.' }
     end

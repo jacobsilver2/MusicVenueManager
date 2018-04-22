@@ -1,8 +1,8 @@
 TODO
 
 [x] Times are reporting incorrect values.
-[] Create a activerecord scope method /shows/today & /shows/this_week
-  [] involves refactoring the index page to use links - I believe I can keep my methods as is.
+[x] Create a activerecord scope method /shows/today & /shows/this_week
+  [x] involves refactoring the index page to use links - I believe I can keep my methods as is.
 [x] SOMETHING IS GOING TO HAVE TO GET REFACTORED TO SUPPORT A HAS MANY  THROUGH RELATIONSHIP !!!
 [x] Refactor new/edit form partial(s) to use Luisa's technique and only use one form.
 [x] Show show page should list the set order based on the join model
