@@ -11,7 +11,10 @@ Rails.application.routes.draw do
 		root 'devise/sessions#new'
   end
   
-  resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create, :today, :this_week]
+  get 'shows/today', :to => 'shows#today'
+  get 'shows/this_week', :to => 'shows#this_week'
+  
+  resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create]
   resources :acts, :only => [:show, :edit, :update, :destroy, :create]
   
   resources :users do

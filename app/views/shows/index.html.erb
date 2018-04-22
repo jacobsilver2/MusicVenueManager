@@ -1,5 +1,5 @@
-<%= render 'todaysshows' %>
-<p><strong>This Week's Shows</strong></p>
-<%= render 'thisweek' %>
+<p><strong><%= link_to "Click to view today's show:", shows_today_path %></strong></p>
+<p><strong><%= link_to "Click to view this week's shows:", shows_this_week_path %></strong></p>
+
 <p><strong>All Shows:</strong></p>
 <%= render 'shows' %>
