@@ -13,6 +13,10 @@ class ActsController < ApplicationController
   def create 
     if params[:act][:collectionName] != ""
       @act = Act.find(params[:act][:collectionName])
+      #what do I want to do? 
+        #add this act to the act_show table
+      @act.act_shows.build
+      @act.act_shows.last.show_id = params[:act][:act_shows_attributes]["0"][:show_id]
       set_set_order(@act, @act.shows.last)
       redirect_to show_path(@act.shows.last)
       return

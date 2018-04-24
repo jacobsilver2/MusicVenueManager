@@ -1,12 +1,12 @@
 TODO
 
-[] Make a user-submittable attribute on join model
+[] get things back to how they were, except now we'll be using a unique show edit controller, not the form partial.
 
 
 
 
 
-
+[x] Make a user-submittable attribute on join model
 [x] Times are reporting incorrect values.
 [x] Create a activerecord scope method /shows/today & /shows/this_week
   [x] involves refactoring the index page to use links - I believe I can keep my methods as is.
