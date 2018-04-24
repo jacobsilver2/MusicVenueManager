@@ -27,12 +27,8 @@ Specs:
     validates_presence_of :start_time, :message => "Please enter a valid start time"
     validates_presence_of :date, :message => "Please enter a valid date"
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
-  MISUNDERSTOOD - REFACTOR
-  
-  Show#shows_by_date
-  Show#today_confirmed
-  Show#this_week_confirmed
-  ...and about 6 more
+  shows/today
+  shows/this_week
 - [x] Include signup (how e.g. Devise)
   devise
 - [x] Include login (how e.g. Devise)

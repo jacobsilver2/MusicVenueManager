@@ -1,6 +1,7 @@
 class Act < ApplicationRecord
   has_many :act_shows
   has_many :shows, :through => :act_shows  
+  accepts_nested_attributes_for :act_shows, allow_destroy: true
 
   validates :name,
             :presence => {:message => "Name can't be blank."},

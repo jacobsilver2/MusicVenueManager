@@ -1,5 +1,12 @@
 TODO
 
+[] Make a user-submittable attribute on join model
+
+
+
+
+
+
 [x] Times are reporting incorrect values.
 [x] Create a activerecord scope method /shows/today & /shows/this_week
   [x] involves refactoring the index page to use links - I believe I can keep my methods as is.
@@ -22,9 +29,6 @@ QUESTIONS FOR LUISA
 
 [x] How can I clean up my Act create method to allow either an act to get added from a collection or create a new act?  Right now it feels a bit crude
 [x] How can I bring back my Act validations and still allow the collection of already existing Acts (because hitting submit after choosing from the collection sends a params hash full of empty values which mostly all fail validations)
-
-[] A show can't have the same act twice.  How do I make a validation for that?
-look at rails guide for associations - uniqueness with scope option
 
 [x] Why is my connection not secure?
 

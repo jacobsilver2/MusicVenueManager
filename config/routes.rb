@@ -15,14 +15,14 @@ Rails.application.routes.draw do
   get 'shows/this_week', :to => 'shows#this_week'
   
   resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create]
-  resources :acts, :only => [:show, :edit, :update, :destroy, :create]
+  
   
   resources :users do
     resources :shows, :only => [:new]
   end
   
   resources :shows do
-    resources :acts, :only => [:new, :index]
+    resources :acts, :only => [:new, :index, :edit, :update, :show, :create, :destroy]
   end
   
 end
