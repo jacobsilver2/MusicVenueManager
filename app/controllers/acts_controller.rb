@@ -1,6 +1,6 @@
 class ActsController < ApplicationController
   before_action :find_act, only:[:show, :edit, :update, :destroy]
-  before_action :find_show, only:[:index,:new, :edit, :update]
+  before_action :find_show, only:[:index,:new]
 
   def index
     @show = Show.find(params[:show_id])
@@ -34,10 +34,9 @@ class ActsController < ApplicationController
   end
   
   def update
-    raise params.inspect
     respond_to do |format|
       if @act.update(act_params)
-        format.html { redirect_to show_act_path(@act), notice: 'Act was successfully updated.' }
+        format.html { redirect_to act_path(@act), notice: 'Act was successfully updated.' }
       else
         format.html { render :edit }
       end

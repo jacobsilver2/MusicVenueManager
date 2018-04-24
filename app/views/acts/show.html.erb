@@ -9,7 +9,7 @@
 <p><strong>Contact Email: </strong><%= mail_to @act.contact_email %></p>
 <% if user_signed_in? %>
 <p><%= link_to 'Delete Act', act_path(@act), method: :delete %></p>
-<p><%= link_to 'Edit Act', edit_show_act_path(@act) %></p>
+<p><%= link_to 'Edit Act', edit_act_path(@act) %></p>
 <% end %>
 <p><%= link_to 'Back', shows_path %></p>
 </div>
