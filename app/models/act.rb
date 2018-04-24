@@ -1,5 +1,5 @@
 class Act < ApplicationRecord
-  has_many :act_shows
+  has_many :act_shows, :dependent => :destroy
   has_many :shows, :through => :act_shows  
   accepts_nested_attributes_for :act_shows, allow_destroy: true
 

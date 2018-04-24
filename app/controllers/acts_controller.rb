@@ -1,10 +1,13 @@
 class ActsController < ApplicationController
   before_action :find_act, only:[:show, :edit, :update, :destroy]
-  before_action :find_show, only:[:index,:new]
+  before_action :find_show, only:[:index, :new]
 
   def index
     @show = Show.find(params[:show_id])
   end
+
+  def show
+  end  
 
   def new
     @act = Act.new
@@ -15,8 +18,8 @@ class ActsController < ApplicationController
     
     respond_to do |format|
       if @act.save
-        set_set_order(@act, @act.shows.last)
-        format.html { redirect_to show_path(@act.shows.last), notice: 'Act was successfully added.' }
+        set_set_order(@act, @act.shows.first)
+        format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully added.' }
       else
         format.html {render :new, notice: 'Errors were found.' }
       end
@@ -38,8 +41,8 @@ class ActsController < ApplicationController
   end
   
   def destroy
+    ActShow.where("act_id = ?", @act.id).destroy_all
     @act.destroy
-    ActShow.where(:act_id => @act_id).destroy_all
     respond_to do |format|
       format.html {redirect_to shows_path, notice: 'Act was successfully deleted. '}
     end
