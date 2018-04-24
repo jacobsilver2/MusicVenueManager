@@ -1,7 +1,7 @@
 
   <ul>
   <% @shows.map do |show| %>
-    <li><%= link_to "#{show.format_date}", show %></li>
+    <li><%= link_to "#{format_date(show)}", show %></li>
   <% end %>
   </ul>
 

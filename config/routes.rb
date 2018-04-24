@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
   
   resources :shows do
-    resources :acts, :only => [:new, :index]
+    resources :acts, :only => [:new, :index, :show]
   end
   
 end

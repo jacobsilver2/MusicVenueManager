@@ -65,7 +65,7 @@ class ShowsController < ApplicationController
 
   def destroy
     @show.destroy
-    ActShow.where(:id => @show.id).destroy_all
+    ActShow.where(:show_id => @show.id).destroy_all
     respond_to do |format|
       format.html { redirect_to shows_path , notice: 'Show was successfully deleted.' }
     end

@@ -1,12 +1,8 @@
 TODO
+[] Display field in show view to indicate if the act is a headliner
 
-[] Make a user-submittable attribute on join model
-
-
-
-
-
-
+[x] Make a user-submittable attribute on join model
+[x] Why isn't show destroy deleting the associated acts?
 [x] Times are reporting incorrect values.
 [x] Create a activerecord scope method /shows/today & /shows/this_week
   [x] involves refactoring the index page to use links - I believe I can keep my methods as is.

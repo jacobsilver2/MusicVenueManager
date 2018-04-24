@@ -11,14 +11,7 @@ class ActsController < ApplicationController
   end
   
   def create 
-    if params[:act][:collectionName] != ""
-      @act = Act.find(params[:act][:collectionName])
-      set_set_order(@act, @act.shows.last)
-      redirect_to show_path(@act.shows.last)
-      return
-    else
-      @act = Act.new(act_params)
-    end
+  @act = Act.new(act_params)
     
     respond_to do |format|
       if @act.save
@@ -36,7 +29,8 @@ class ActsController < ApplicationController
   def update
     respond_to do |format|
       if @act.update(act_params)
-        format.html { redirect_to act_path(@act), notice: 'Act was successfully updated.' }
+        
+        format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -45,6 +39,7 @@ class ActsController < ApplicationController
   
   def destroy
     @act.destroy
+    ActShow.where(:act_id => @act_id).destroy_all
     respond_to do |format|
       format.html {redirect_to shows_path, notice: 'Act was successfully deleted. '}
     end

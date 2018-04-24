@@ -17,13 +17,9 @@ class Show < ApplicationRecord
     end
   end
   
-  def format_date
-    self.date.strftime("%B %e, %Y")
-  end
+
   
-  def format_time
-    self.start_time.strftime("%l:%M %p")
-  end
+
 
 
   def self.confirmed_shows_by_date

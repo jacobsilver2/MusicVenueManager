@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
   <div class="info">
-    <p><strong>Date:</strong> <%= @show.format_date %></p>
-    <p><strong>Start Time:</strong> <%= @show.format_time %></p>
+    <p><strong>Date:</strong> <%= format_date(@show) %></p>
+    <p><strong>Start Time:</strong> <%= format_time(@show) %></p>
     <p><strong><%= link_to "Acts:", show_acts_path(@show) %></strong></p>
     
     <% if @show.acts.count > 0 %>
