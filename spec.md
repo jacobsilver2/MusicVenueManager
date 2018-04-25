@@ -48,5 +48,5 @@ Confirm:
 - [x] The application is pretty DRY
 - [x] Limited logic in controllers
   acts_controller#create has more logic than any other controller method, but does use a private method to do a bunch of heavy lifting.
-- [ ] Views use helper methods if appropriate
+- [x] Views use helper methods if appropriate
 - [x] Views use partials if appropriate

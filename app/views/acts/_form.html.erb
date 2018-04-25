@@ -1,12 +1,7 @@
 <%= render 'errors' %>
  
 <%= form_for(@act, :html => {:name => "ActForm"}) do |f| %>
-  <% if @act.new_record? %>
-    <p><strong>Choose an already existing act:</strong></p>
-    <%= f.collection_select :collectionName, Act.all, :id, :name, include_blank: 'Select an act' %>
-    
-    <p><strong>Or create a new act:</strong></p>
-  <% end %>
+  
 
   <div class="field"> <%= f.label :name %><br>
   <%= f.text_field :name %></div>
@@ -18,6 +13,7 @@
   <%= f.text_area :blurb %></div>
 
   <div class="field"><%= f.label :headliner %><br>
+  
   <%= f.fields_for :act_shows, @act.act_shows.build do |s| %>
     <%= s.hidden_field :show_id, :value => params[:show_id] %>
     <%= s.check_box :headliner %>

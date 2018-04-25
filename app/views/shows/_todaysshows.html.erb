@@ -1,11 +1,11 @@
 <% if @show %>
     <p><strong>Today's Show:</strong></p>
-    <p><strong><%= @show.format_date %> - <%= @show.format_time %></strong></p>
+    <p><strong><%= format_date(@show) %> - <%= format_time(@show) %></strong></p>
     
     <% if @show.acts.count > 0 %>
       <% @show.acts.each do |act| %>
         <%= ActShow.setOrder(act, @show) %>:
-        <%= link_to "#{act.name}", act_path(act) %>
+        <%= link_to "#{act.name}", show_acts_path(act) %>
         <br>
       <% end %>
     

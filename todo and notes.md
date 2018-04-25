@@ -1,4 +1,5 @@
 TODO
+[] Display field in show view to indicate if the act is a headliner
 
 [] get things back to how they were, except now we'll be using a unique show edit controller, not the form partial.
 
