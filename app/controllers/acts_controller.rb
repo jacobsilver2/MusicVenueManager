@@ -21,7 +21,8 @@ class ActsController < ApplicationController
         set_set_order(@act, @act.shows.first)
         format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully added.' }
       else
-        format.html {render :new, notice: 'Errors were found.' }
+        @show = Show.last
+        format.html {redirect_to show_path(@show), notice: 'Errors were found.' }
       end
     end
   end
