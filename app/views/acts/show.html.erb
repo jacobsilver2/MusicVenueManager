@@ -2,8 +2,9 @@
 
 <div class="info">
 <p><strong>Name: </strong><%= @act.name %></p>
-<p><strong>Website: </strong> <%= link_to @act.website %>
+<p><strong>Website: </strong> <%= link_to "#{@act.website}", @act.website %>
 <p><strong>Blurb: </strong><%= @act.blurb %></p>
+<p><strong>Headliner? </strong><%= headliner?(@act) %></p>
 <p><strong>Contact Name: </strong><%= @act.contact_name %></p>
 <p><strong>Notes: </strong><%= @act.notes %></p>
 <p><strong>Contact Email: </strong><%= mail_to @act.contact_email %></p>

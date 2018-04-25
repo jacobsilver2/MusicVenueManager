@@ -33,7 +33,7 @@ class ActsController < ApplicationController
     respond_to do |format|
       if @act.update(act_params)
         
-        format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully updated.' }
+        format.html { redirect_to act_path(@act), notice: 'Act was successfully updated.' }
       else
         format.html { render :edit }
       end
