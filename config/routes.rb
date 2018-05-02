@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get '/acts/:id/destroy', to: 'shows#destroy'
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
   authenticated :user do
 		root 'shows#index', as: 'authenticated_root'
-	end
+  end
+  
 	devise_scope :user do
 		root 'devise/sessions#new'
   end

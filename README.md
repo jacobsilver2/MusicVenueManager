@@ -7,6 +7,16 @@ This is an application which allows a user to manage bookings for a music venue.
 # Installation Guide
 Fork and clone the repo.  Make sure to run bundle install after downloading.  You can run a server by typing in thin start --ssl into the command line. 
 
+# Contributing
+We love pull requests from everyone.
+
+Fork, then clone the repo:
+
+git clone git@github.com:jacobsilver2/MusicVenueManager.git
+Push to your fork and submit a pull request.
+
+At this point you're waiting on us. We like to at least comment on pull requests within three business days (and, typically, one business day). We may suggest some changes or improvements or alternatives.
+
 # Licensing Statement
 Copyright 2018 Jacob Silver
 

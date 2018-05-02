@@ -16,7 +16,7 @@ class ShowsController < ApplicationController
 
   def today
     if user_signed_in?
-      @show = Show.today_all
+      @show = Show.today_all.first
       
     else
       @show = Show.today_confirmed

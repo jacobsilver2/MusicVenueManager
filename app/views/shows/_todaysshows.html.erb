@@ -5,7 +5,7 @@
     <% if @show.acts.count > 0 %>
       <% @show.acts.each do |act| %>
         <%= ActShow.setOrder(act, @show) %>:
-        <%= link_to "#{act.name}", show_acts_path(act) %>
+        <%= link_to "#{act.name}", act_path(act) %>
         <br>
       <% end %>
     

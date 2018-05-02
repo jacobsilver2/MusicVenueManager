@@ -8,6 +8,9 @@ class Show < ApplicationRecord
   validates_presence_of :start_time, :message => "Please enter a valid start time"
   validates_presence_of :date, :message => "Please enter a valid date"
   
+  # scope :today_confirmed, -> { where(confirmed: true) }
+  scope :today_all, -> { where("date = ?", Date.today) }
+
 
   def format_confirmed
     if self.confirmed
@@ -18,10 +21,6 @@ class Show < ApplicationRecord
   end
   
 
-  
-
-
-
   def self.confirmed_shows_by_date
     Show.all.select{|show| show.confirmed}.sort{|a,b| a.date <=> b.date}
   end
@@ -30,15 +29,15 @@ class Show < ApplicationRecord
     Show.all.sort{ |a,b| a.date <=> b.date}
   end
 
-  def self.today_confirmed
-    t = Date.today
-    Show.all.detect{ |show| (show.date == t) && show.confirmed}
-  end
+  # def self.today_confirmed
+  #   t = Date.today
+  #   Show.all.detect{ |show| (show.date == t) && show.confirmed}
+  # end
 
-  def self.today_all
-    t = Date.today
-    Show.all.detect{ |show| show.date == t}
-  end
+  # def self.today_all
+  #   t = Date.today
+  #   Show.all.detect{ |show| show.date == t}
+  # end
 
   def self.this_week_confirmed
     oneWeek = Date.today + 7
