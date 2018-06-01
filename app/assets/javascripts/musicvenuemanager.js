@@ -44,10 +44,10 @@ function viewShow(showId) {
 
 function renderShow(show) {
     return `
-    <h1 id="${show.id}">${moment(show.date).format("MMMM Do YYYY")}</h1>
-    <h1>${moment(show.start_time).format("h:mm a")}</h1>
-    <ul>
-        <li></li>
-    </ul>
-    `
+    <h1 id="${show.id}">${moment(show.date).format("MMMM Do YYYY")} - ${moment(show.start_time).format("h:mm a")}</h1>
+    ${show.acts.map(function (act){
+        return `
+        <p><strong><a href="${act.website}">${act.name}</strong> - ${act.blurb}</a></p>
+        `
+    })}`
 }
