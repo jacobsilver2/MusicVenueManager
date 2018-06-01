@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
   gem 'omniauth-facebook'
   gem 'figaro'
   gem "combined_time_select", "~> 2.0.0"
+  gem 'active_model_serializers'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
