@@ -15,6 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require popper
+//= require moment
 //= require bootstrap
 //= require musicvenuemanager
 //= require_tree .

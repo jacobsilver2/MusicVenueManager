@@ -19,6 +19,7 @@ function viewShows() {
     $('#shows').empty();
     $.get("/shows", function(shows){
         if (shows.length) {
+            $('#message').html("You are viewing all shows")
             shows.forEach(function(show){
                 let showHTML = `<button id="showid-${show.id}" class="btn btn-secondary">${show.date}</button><br>`;
                 $('#shows').append(showHTML);
@@ -26,10 +27,27 @@ function viewShows() {
                     viewShow(show.id);
                 });
             })
+        } else {
+            $('#message').html("there are currently no shows in the database.")
         }
     })
 }
 
 function viewShow(showId) {
-    alert("you want to view a show")
+    $.get("/shows/" + showId, function(show) {
+        $('#message').html(`Currently viewing the show on ${show.date}`)
+        $('#shows').empty();
+        let showHTML = renderShow(show);
+        $('#shows').append(showHTML)
+    })
+}
+
+function renderShow(show) {
+    return `
+    <h1 id="${show.id}">${moment(show.date).format("MMMM Do YYYY")}</h1>
+    <h1>${moment(show.start_time).format("h:mm a")}</h1>
+    <ul>
+        <li></li>
+    </ul>
+    `
 }
