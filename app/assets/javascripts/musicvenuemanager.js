@@ -2,12 +2,26 @@ $(document).ready(function(){
     attachListeners();
 })
 
+function hijackForm(e) {
+            e.preventDefault();
+            let values = $(e).serialize();
+            console.log(e);
+            let posting = $.post('/users/1/shows', values);
+            posting.done(function(data){
+                var show = data;
+                $('#showDate').text(show["date"]);
+            })
+}
+
 function attachListeners() {
     $('#create_show').on('click', function(){
         displaynewShowForm();
     });
     $('#view_shows').on('click', function(){
         viewShows();
+    })
+    $('form').on('submit', function(e) {
+        hijackForm(e);
     })
 }
 
