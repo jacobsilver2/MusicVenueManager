@@ -4,10 +4,10 @@ class ShowsController < ApplicationController
   def index
     if user_signed_in?
       @shows = Show.shows_by_date
-      
+      render json: @shows
     else
       @shows = Show.confirmed_shows_by_date
-      
+      render json: @shows
     end
   end
   
