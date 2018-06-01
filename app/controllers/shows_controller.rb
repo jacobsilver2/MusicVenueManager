@@ -12,7 +12,7 @@ class ShowsController < ApplicationController
   end
   
   def show
-      
+    render json: @show
   end
 
   def today
