@@ -4,15 +4,15 @@ $(document).ready(function(){
 
 function attachListeners() {
     $('#create_show').on('click', function(){
-        createShow();
+        displaynewShowForm();
     });
     $('#view_shows').on('click', function(){
         viewShows();
     })
 }
 
-function createShow() {
-    alert("you clicked create show")
+function displaynewShowForm() {
+    $.get('/shows/new', )
 }
 
 function viewShows() {

@@ -38,16 +38,18 @@ class ShowsController < ApplicationController
   end
 
   def create
-    params[:show].parse_time_select! :start_time
-    @show = Show.new(show_params)
-    @show.user_id = current_user.id if current_user
-    respond_to do |format|
-      if @show.save
-        format.html { redirect_to show_path(@show), notice: 'Show was successfully created.' }
-      else
-        format.html {render :new, notice: 'Errors were found.' }
-      end
-    end
+    show = Show.create(show_params)
+    render json: show, status: 201
+    # params[:show].parse_time_select! :start_time
+    # @show = Show.new(show_params)
+    # @show.user_id = current_user.id if current_user
+    # respond_to do |format|
+    #   if @show.save
+    #     format.html { redirect_to show_path(@show), notice: 'Show was successfully created.' }
+    #   else
+    #     format.html {render :new, notice: 'Errors were found.' }
+    #   end
+    # end
   end
 
   def edit
