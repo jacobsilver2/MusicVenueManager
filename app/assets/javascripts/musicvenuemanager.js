@@ -2,6 +2,36 @@ $(document).ready(function(){
     attachListeners();
 })
 
+function attachListeners() {
+    $('#create_show').on('click', function(){
+        displaynewShowForm();
+    });
+    $('#view_shows').on('click', function(){
+        viewShows();
+    })
+
+    $('form').submit(function (e){
+        alert(e);
+    })
+}
+    
+function displaynewShowForm() {
+    $('#message').empty();
+    $.get('/shows/new', function (response) {
+        $('#shows').html(response);
+    })
+    }
+
+function submitData () {
+    $('form').submit(function (event) {
+        event.preventDefault();
+        let values = $(this).serialize();
+        alert(values);
+})
+}
+
+
+
 // function hijackForm(e) {
 //             alert(this)
 //             e.preventDefault();
@@ -13,30 +43,7 @@ $(document).ready(function(){
 //             })
 // }
 
-function attachListeners() {
-    $('#create_show').on('click', function(){
-        displaynewShowForm();
-    });
-    $('#view_shows').on('click', function(){
-        viewShows();
-    })
-}
 
-(function () {
-    $('form').on('submit', function(event) {
-      event.preventDefault();
-      var values = $(this).serialize();
-      var posting = $.post('/shows', values);
-      posting.done(function(data){
-          let show = data;
-          $("#showDate").text(show["start_date"]); 
-      });
-  });
-});
-
-// function displaynewShowForm() {
-//     $.get('/shows/new', )
-// }
 
 function viewShows() {
     $('#shows').empty();

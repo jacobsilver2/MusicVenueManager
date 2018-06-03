@@ -34,11 +34,10 @@ class ShowsController < ApplicationController
 
   def new
     @show = Show.new
-    @user = current_user 
+    render partial: 'form', locals: { show: @show }, layout: false 
   end
 
   def create
-    show = Show.create(show_params)
     params[:show].parse_time_select! :start_time
     show = Show.new(show_params)
     show.user_id = current_user.id if current_user
