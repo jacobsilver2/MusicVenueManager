@@ -12,9 +12,24 @@ function attachListeners() {
     $("#container").on("click", "#add_band", function(){
         addBand();
     });
-    $("#container").on("click", "#", function(){
-        addBand();
-    }); 
+    // $("#container").on("click", "#show_submit", function(){
+    //     submitForm();
+    // }); 
+    // $(document).on('click', '#show_submit', function(evt){
+    //     evt.preventDefault();
+    //     alert(evt)
+    // })
+    $('#shows').on("submit", "#new_show", function(e) {
+        e.preventDefault();
+        let values = $(this).serialize();
+        var posting = $.post('/shows', values);
+        posting.done(function(data) {
+            let showHTML = renderShow(data);
+            $("#shows").empty();
+            $("#shows").append(showHTML)
+
+        });
+    })
 }
     
 function displaynewShowForm() {
@@ -23,15 +38,6 @@ function displaynewShowForm() {
         $('#shows').html(response);
     })
     }
-
-function submitForm() {
-    $('#new_show').on("submit", function(event) {
-        event.preventDefault();
-        alert("yo");
-        // let values = $(this).serialize();
-        // alert(values);
-})
-}
 
 function viewShows() {
     $('#shows').empty();
