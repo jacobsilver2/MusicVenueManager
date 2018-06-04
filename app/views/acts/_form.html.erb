@@ -1,4 +1,4 @@
-<%= render 'errors' %>
+<%# <%= render 'errors' %> %>
  
 <%= form_for(@act, :html => {:name => "ActForm"}) do |f| %>
   
@@ -28,8 +28,6 @@
   <div class="field"><%= f.label :notes %><br>
   <%= f.text_area :notes %></div>
 
-  
-  
   <div class="actions">
     <%= f.submit %>
   </div>

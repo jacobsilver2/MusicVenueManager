@@ -10,12 +10,9 @@ class ActsController < ApplicationController
   end  
 
   def new
-    # binding.pry
     show = Show.find(params[:show_id])
-    # @act = show.acts.create
-    # new_act_form = render partial: 'form', locals: { act: @act }, layout: false 
-    # new_child_form.gsub!("[#{@act.id}]", "[#{Time.now.to_i}]")  
-    # render :json => new_act_form, :layout => false
+    @act = show.acts.create
+    render partial: 'form', locals: { act: @act, show_id: show }, layout: false
   end
 
 

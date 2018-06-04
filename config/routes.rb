@@ -18,15 +18,15 @@ Rails.application.routes.draw do
   # get 'shows/:id/acts/new', :to => 'acts#new'
   
   resources :shows, :only => [:index, :show, :edit, :update, :destroy, :create, :new]
-  resources :acts, :only => [:destroy, :create, :edit, :update, :show, :new]
+  resources :acts, :only => [:destroy, :create, :edit, :update, :show]
   
   # resources :users do
   #   resources :shows, :only => [:new]
   # end
   
-  # resources :shows do
-  #   resources :acts, :only => [:new, :index]
-  # end
+  resources :shows do
+    resources :acts, :only => [:new, :index]
+  end
   
 end
 

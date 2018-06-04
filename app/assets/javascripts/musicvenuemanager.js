@@ -25,6 +25,8 @@ function attachListeners() {
             $('#message').html(`<button id="add_act" class="btn btn-primary">Add An Act</button>`)
         });
     })
+
+    
 }
     
 function displaynewShowForm() {
@@ -63,7 +65,7 @@ function viewShow(showId) {
 
 function renderShow(show) {
     return `
-    <ul class="list-group"
+    <ul class="list-group">
     <li class="list-group-item" id="${show.id}">${moment(show.date).format("MMMM Do YYYY")} - ${moment(show.start_time).format("h:mm a")}</li>
     ${show.acts.map(function (act){
         return `
@@ -74,11 +76,11 @@ function renderShow(show) {
 }
 
 function displayNewActForm() {
-    // alert("you clicked Add Act")
-
-    // $('#message').empty();
-    $.get('/acts/new', function (response) {
-        // $('#message').html(response);
-        alert(response);
+    let id = $('.list-group li')[0].id
+    let intId = parseInt(id);
+    $.get(`/shows/${intId}/acts/new`, function (response) {
+        $('#shows').empty();
+        $('#acts').empty();
+        $('#acts').html(response);
     })
 }
