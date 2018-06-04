@@ -1,6 +1,6 @@
 class ActsController < ApplicationController
   before_action :find_act, only:[:show, :edit, :update, :destroy]
-  before_action :find_show, only:[:index, :new]
+  before_action :find_show, only:[:index]
 
   def index
     @show = Show.find(params[:show_id])
@@ -10,16 +10,23 @@ class ActsController < ApplicationController
   end  
 
   def new
-    @act = Act.new
+    # binding.pry
+    show = Show.find(params[:show_id])
+    # @act = show.acts.create
+    # new_act_form = render partial: 'form', locals: { act: @act }, layout: false 
+    # new_child_form.gsub!("[#{@act.id}]", "[#{Time.now.to_i}]")  
+    # render :json => new_act_form, :layout => false
   end
-  
+
+
   def create 
-  @act = Act.new(act_params)
+  act = Act.new(act_params)
     
     respond_to do |format|
-      if @act.save
-        set_set_order(@act, @act.shows.first)
-        format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully added.' }
+      if act.save
+        set_set_order(act, act.shows.first)
+        render json: act, status: 201
+        # format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully added.' }
       else
         @show = Show.last
         format.html {redirect_to show_path(@show), notice: 'Errors were found.' }

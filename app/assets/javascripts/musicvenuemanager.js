@@ -9,16 +9,10 @@ function attachListeners() {
     $('#view_shows').on('click', function(){
         viewShows();
     })
-    $("#container").on("click", "#add_band", function(){
-        addBand();
+    $("#container").on("click", "#add_act", function(){
+        displayNewActForm();
     });
-    // $("#container").on("click", "#show_submit", function(){
-    //     submitForm();
-    // }); 
-    // $(document).on('click', '#show_submit', function(evt){
-    //     evt.preventDefault();
-    //     alert(evt)
-    // })
+
     $('#shows').on("submit", "#new_show", function(e) {
         e.preventDefault();
         let values = $(this).serialize();
@@ -26,8 +20,9 @@ function attachListeners() {
         posting.done(function(data) {
             let showHTML = renderShow(data);
             $("#shows").empty();
+            $("#message").empty();
             $("#shows").append(showHTML)
-
+            $('#message').html(`<button id="add_act" class="btn btn-primary">Add An Act</button>`)
         });
     })
 }
@@ -59,7 +54,7 @@ function viewShows() {
 
 function viewShow(showId) {
     $.get("/shows/" + showId, function(show) {
-        $('#message').html(`<button id="add_band" class="btn btn-primary">Add A Band</button>`)
+        $('#message').html(`<button id="add_act" class="btn btn-primary">Add An Act</button>`)
         $('#shows').empty();
         let showHTML = renderShow(show);
         $('#shows').append(showHTML)
@@ -78,6 +73,12 @@ function renderShow(show) {
     </ul>`
 }
 
-function addBand() {
-    alert("you clicked add band")
+function displayNewActForm() {
+    // alert("you clicked Add Act")
+
+    // $('#message').empty();
+    $.get('/acts/new', function (response) {
+        // $('#message').html(response);
+        alert(response);
+    })
 }
