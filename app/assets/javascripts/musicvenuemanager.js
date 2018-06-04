@@ -9,10 +9,12 @@ function attachListeners() {
     $('#view_shows').on('click', function(){
         viewShows();
     })
-
-    $('form').submit(function (e){
-        alert(e);
-    })
+    $("#container").on("click", "#add_band", function(){
+        addBand();
+    });
+    $("#container").on("click", "#", function(){
+        addBand();
+    }); 
 }
     
 function displaynewShowForm() {
@@ -22,28 +24,14 @@ function displaynewShowForm() {
     })
     }
 
-function submitData () {
-    $('form').submit(function (event) {
+function submitForm() {
+    $('#new_show').on("submit", function(event) {
         event.preventDefault();
-        let values = $(this).serialize();
-        alert(values);
+        alert("yo");
+        // let values = $(this).serialize();
+        // alert(values);
 })
 }
-
-
-
-// function hijackForm(e) {
-//             alert(this)
-//             e.preventDefault();
-//             let values = $(this).serialize();
-//             let posting = $.post('/users/1/shows', values);
-//             posting.done(function(data){
-//                 var show = data;
-//                 $('#showDate').text(show["date"]);
-//             })
-// }
-
-
 
 function viewShows() {
     $('#shows').empty();
@@ -65,7 +53,7 @@ function viewShows() {
 
 function viewShow(showId) {
     $.get("/shows/" + showId, function(show) {
-        $('#message').html(`You are currently viewing the show on ${show.date}`)
+        $('#message').html(`<button id="add_band" class="btn btn-primary">Add A Band</button>`)
         $('#shows').empty();
         let showHTML = renderShow(show);
         $('#shows').append(showHTML)
@@ -82,4 +70,8 @@ function renderShow(show) {
         `
     })}
     </ul>`
+}
+
+function addBand() {
+    alert("you clicked add band")
 }
