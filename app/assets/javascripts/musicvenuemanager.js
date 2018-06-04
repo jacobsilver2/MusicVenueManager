@@ -13,10 +13,24 @@ function attachListeners() {
         displayNewActForm();
     });
 
+    $('#acts').on("submit", "#new_act", function(e){
+        e.preventDefault();
+        let values = $(this).serialize();
+        // alert(values);
+        let posting = $.post('/acts', values);
+        posting.done(function(data) {
+            let act = data;
+            $('#acts').empty();
+            // $("#acts").html(act)
+            // console.log(act.shows[act.shows.length - 1].id);
+            viewShow(act.shows[act.shows.length - 1].id)
+        });
+    })
+
     $('#shows').on("submit", "#new_show", function(e) {
         e.preventDefault();
         let values = $(this).serialize();
-        var posting = $.post('/shows', values);
+        let posting = $.post('/shows', values);
         posting.done(function(data) {
             let showHTML = renderShow(data);
             $("#shows").empty();
@@ -26,7 +40,7 @@ function attachListeners() {
         });
     })
 
-    
+
 }
     
 function displaynewShowForm() {

@@ -18,16 +18,14 @@ class ActsController < ApplicationController
 
   def create 
   act = Act.new(act_params)
-    
-    respond_to do |format|
-      if act.save
-        set_set_order(act, act.shows.first)
-        render json: act, status: 201
-        # format.html { redirect_to show_path(@act.shows.first), notice: 'Act was successfully added.' }
-      else
-        @show = Show.last
-        format.html {redirect_to show_path(@show), notice: 'Errors were found.' }
-      end
+  # binding.pry
+    if act.save
+      # binding.pry
+      # set_set_order(act, act.shows.first)
+      render json: act, status: 201
+    else
+      @show = Show.last
+      format.html {redirect_to show_path(@show), notice: 'Errors were found.' }
     end
   end
   
