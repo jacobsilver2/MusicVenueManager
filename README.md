@@ -7,6 +7,13 @@ This is an application which allows a user to manage bookings for a music venue.
 # Installation Guide
 Fork and clone the repo.  Make sure to run bundle install after downloading.  You can run a server by typing in rails server into the command line. Use the web address http://localhost:3000
 
+# Known Issues/Things to Do
+- [] Refactor as many function statements to ES6
+- [] Time select is reporting an incorrect time, 5 hours earlier than selected
+- [] Facebook oauth is not functioning since refactoring to jquery/ajax.  It might be because of facebook's privacy rules changing.
+- [] Instead of using posting.done, use .then, and implement .errors
+- [] Implement full CRUD functionality via jquery and ajax (right now it's just create and view, no edit, update, destroy)
+
 # Contributing
 We love pull requests from everyone.
 
