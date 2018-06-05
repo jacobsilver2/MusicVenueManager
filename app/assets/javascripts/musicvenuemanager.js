@@ -53,37 +53,29 @@ function viewShows() {
         if (shows.length) {
             $('#message').html("You are viewing all shows")
             shows.forEach(function(show){
-                let showHTML = `<button id="showid-${show.id}" class="btn btn-secondary">${show.date}</button><br><br>`;
-                $('#shows').append(showHTML);
+                //create new js model for each show
+                let concert = new Show(show.id, show.date, show.start_time, show.notes, show.user_id, show.confirmed, show.acts);
+                //create variable of html data for shows buttons
+                let showsInsert = concert.renderShowButton();
+                //create variable of html data for individual shows
+                let showInsert = concert.viewShow();
+                // add shows buttons to dom
+                $('#shows').append(showsInsert);
+                // add click handlers which route user to individual show page
                 $(`#showid-${show.id}`).on('click', function(){
-                    viewShow(show.id);
-                });
+                    $('#shows').empty();
+                    $('#shows').append(showInsert)
+                })
+                // let showHTML = `<button id="showid-${show.id}" class="btn btn-secondary">${show.date}</button><br><br>`;
+                // $('#shows').append(showHTML);
+                // $(`#showid-${show.id}`).on('click', function(){
+                //     viewShow(show.id);
+                // });
             })
         } else {
             $('#message').html("there are currently no shows in the database.")
         }
     })
-}
-
-function viewShow(showId) {
-    $.get("/shows/" + showId, function(show) {
-        $('#message').html(`<br><button id="add_act" class="btn btn-primary">Add An Act</button>`)
-        $('#shows').empty();
-        let showHTML = renderShow(show);
-        $('#shows').append(showHTML)
-    })
-}
-
-function renderShow(show) {
-    return `
-    <ul class="list-group">
-    <h1 class="list-group-item-primary" id="${show.id}">${moment(show.date).format("MMMM Do YYYY")} - ${moment(show.start_time).format("h:mm a")}</h1>
-    ${show.acts.map(function (act){
-        return `
-        <li class="list-group-item-secondary"><h2><a href="${act.website}">${act.name}</h2> - ${act.blurb}</a></li>
-        `
-    })}
-    </ul>`
 }
 
 function displayNewActForm() {
@@ -94,4 +86,34 @@ function displayNewActForm() {
         $('#acts').empty();
         $('#acts').html(response);
     })
+}
+
+class Show {
+    constructor(id, date, start_time, notes, user_id, confirmed, acts) {
+        this.id = id;
+        this.date = date;
+        this.start_time = start_time;
+        this.notes = notes;
+        this.user_id = user_id;
+        this.confirmed = confirmed;
+        this.acts = acts;
+    }
+
+    renderShowButton() {
+        let htmlToInsert = `
+        <button id="showid-${this.id}" class="btn btn-secondary">${this.date}</button><br><br>`;
+        return htmlToInsert;
+    }
+
+    viewShow() {
+        return `
+            <ul class="list-group">
+            <h1 class="list-group-item-primary" id="${this.id}">${moment(this.date).format("MMMM Do YYYY")} - ${moment(this.start_time).format("h:mm a")}</h1>
+            ${this.acts.map(function (act){
+                return `
+                    <li class="list-group-item-secondary"><h2><a href="${act.website}">${act.name}</h2> - ${act.blurb}</a></li>
+                `
+                })}
+            </ul>` 
+    }
 }

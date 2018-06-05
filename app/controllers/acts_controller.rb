@@ -18,10 +18,7 @@ class ActsController < ApplicationController
 
   def create 
   act = Act.new(act_params)
-  # binding.pry
     if act.save
-      # binding.pry
-      # set_set_order(act, act.shows.first)
       render json: act, status: 201
     else
       @show = Show.last
@@ -35,7 +32,6 @@ class ActsController < ApplicationController
   def update
     respond_to do |format|
       if @act.update(act_params)
-        
         format.html { redirect_to act_path(@act), notice: 'Act was successfully updated.' }
       else
         format.html { render :edit }
