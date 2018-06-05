@@ -16,13 +16,10 @@ function attachListeners() {
     $('#acts').on("submit", "#new_act", function(e){
         e.preventDefault();
         let values = $(this).serialize();
-        // alert(values);
         let posting = $.post('/acts', values);
         posting.done(function(data) {
             let act = data;
             $('#acts').empty();
-            // $("#acts").html(act)
-            // console.log(act.shows[act.shows.length - 1].id);
             viewShow(act.shows[act.shows.length - 1].id)
         });
     })
@@ -36,7 +33,7 @@ function attachListeners() {
             $("#shows").empty();
             $("#message").empty();
             $("#shows").append(showHTML)
-            $('#message').html(`<button id="add_act" class="btn btn-primary">Add An Act</button>`)
+            $('#message').html(`<br><button id="add_act" class="btn btn-primary">Add An Act</button>`)
         });
     })
 
@@ -70,7 +67,7 @@ function viewShows() {
 
 function viewShow(showId) {
     $.get("/shows/" + showId, function(show) {
-        $('#message').html(`<button id="add_act" class="btn btn-primary">Add An Act</button>`)
+        $('#message').html(`<br><button id="add_act" class="btn btn-primary">Add An Act</button>`)
         $('#shows').empty();
         let showHTML = renderShow(show);
         $('#shows').append(showHTML)
@@ -80,17 +77,17 @@ function viewShow(showId) {
 function renderShow(show) {
     return `
     <ul class="list-group">
-    <li class="list-group-item" id="${show.id}">${moment(show.date).format("MMMM Do YYYY")} - ${moment(show.start_time).format("h:mm a")}</li>
+    <h1 class="list-group-item-primary" id="${show.id}">${moment(show.date).format("MMMM Do YYYY")} - ${moment(show.start_time).format("h:mm a")}</h1>
     ${show.acts.map(function (act){
         return `
-        <li class="list-group-item"><h1><a href="${act.website}">${act.name}</h1> - ${act.blurb}</a></li>
+        <li class="list-group-item-secondary"><h2><a href="${act.website}">${act.name}</h2> - ${act.blurb}</a></li>
         `
     })}
     </ul>`
 }
 
 function displayNewActForm() {
-    let id = $('.list-group li')[0].id
+    let id = $('.list-group h1')[0].id
     let intId = parseInt(id);
     $.get(`/shows/${intId}/acts/new`, function (response) {
         $('#shows').empty();
