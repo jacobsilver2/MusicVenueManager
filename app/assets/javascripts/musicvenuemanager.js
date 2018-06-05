@@ -18,9 +18,13 @@ function attachListeners() {
         let values = $(this).serialize();
         let posting = $.post('/acts', values);
         posting.done(function(data) {
-            let act = data;
+            let newAct = new Act(data.id, data.name, data.website, data.blurb, data.shows)
             $('#acts').empty();
-            viewShow(act.shows[act.shows.length - 1].id)
+            $.get(`/shows/${newAct.shows[0].id}`, function(show){
+                $("#shows").empty();
+                let showHTML = getActShowHTML(show);
+                $('#shows').append(showHTML)    
+            })
         });
     })
 
@@ -37,8 +41,6 @@ function attachListeners() {
             $('#message').html(`<br><button id="add_act" class="btn btn-primary">Add An Act</button>`)
         });
     })
-
-
 }
     
 function displaynewShowForm() {
@@ -46,7 +48,20 @@ function displaynewShowForm() {
     $.get('/shows/new', function (response) {
         $('#shows').html(response);
     })
-    }
+}
+
+function getActShowHTML(show) {
+    let showHTML = `
+        <ul class="list-group">
+        <h1 class="list-group-item-primary" id="${show.id}">${moment(show.date).format("MMMM Do YYYY")} - ${moment(show.start_time).format("h:mm a")}</h1>
+        ${show.acts.map(function (act){
+            return `
+                <li class="list-group-item-secondary"><h2><a href="${act.website}">${act.name}</h2> - ${act.blurb}</a></li>
+                `
+                })}
+            </ul>` 
+    return showHTML
+}
 
 function viewShows() {
     $('#shows').empty();
@@ -114,6 +129,16 @@ class Show {
                 })}
         </ul>` 
     return showHTML
+    }
+}
+
+class Act {
+    constructor(id, name, website, blurb, shows) {
+        this.id = id;
+        this.name = name;
+        this.website = website;
+        this.blurb = blurb;
+        this.shows = shows;
     }
 }
 
