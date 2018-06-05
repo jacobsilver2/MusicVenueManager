@@ -29,10 +29,11 @@ function attachListeners() {
         let values = $(this).serialize();
         let posting = $.post('/shows', values);
         posting.done(function(data) {
-            let showHTML = renderShow(data);
+            let newConcert = new Show(data.id, data.date, data.start_time, data.notes, data.user_id, data.confirmed, data.acts)
+            let newConcertHTML = newConcert.viewShow();
             $("#shows").empty();
             $("#message").empty();
-            $("#shows").append(showHTML)
+            $('#shows').append(newConcertHTML)
             $('#message').html(`<br><button id="add_act" class="btn btn-primary">Add An Act</button>`)
         });
     })
@@ -49,6 +50,7 @@ function displaynewShowForm() {
 
 function viewShows() {
     $('#shows').empty();
+    $('#acts').empty();
     $.get("/shows", function(shows){
         if (shows.length) {
             $('#message').html("You are viewing all shows")
@@ -65,12 +67,8 @@ function viewShows() {
                 $(`#showid-${show.id}`).on('click', function(){
                     $('#shows').empty();
                     $('#shows').append(showInsert)
+                    $('#message').html('<br><button id="add_act" class="btn btn-primary">Add An Act</button>');
                 })
-                // let showHTML = `<button id="showid-${show.id}" class="btn btn-secondary">${show.date}</button><br><br>`;
-                // $('#shows').append(showHTML);
-                // $(`#showid-${show.id}`).on('click', function(){
-                //     viewShow(show.id);
-                // });
             })
         } else {
             $('#message').html("there are currently no shows in the database.")
@@ -106,7 +104,7 @@ class Show {
     }
 
     viewShow() {
-        return `
+        let showHTML = `
             <ul class="list-group">
             <h1 class="list-group-item-primary" id="${this.id}">${moment(this.date).format("MMMM Do YYYY")} - ${moment(this.start_time).format("h:mm a")}</h1>
             ${this.acts.map(function (act){
@@ -114,6 +112,9 @@ class Show {
                     <li class="list-group-item-secondary"><h2><a href="${act.website}">${act.name}</h2> - ${act.blurb}</a></li>
                 `
                 })}
-            </ul>` 
+        </ul>` 
+    return showHTML
     }
 }
+
+
