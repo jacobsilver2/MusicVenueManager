@@ -5,7 +5,7 @@
 This is an application which allows a user to manage bookings for a music venue.  The user can create a profile, add shows, and create acts for those shows. It allows the user to edit/delete the show, as well as edit/delete the associated acts.
 
 # Installation Guide
-Fork and clone the repo.  Make sure to run bundle install after downloading.  You can run a server by typing in thin start --ssl into the command line. 
+Fork and clone the repo.  Make sure to run bundle install after downloading.  You can run a server by typing in rails server into the command line. Use the web address http://localhost:3000
 
 # Contributing
 We love pull requests from everyone.
