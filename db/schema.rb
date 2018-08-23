@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180420103821) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "act_shows", force: :cascade do |t|
     t.integer "act_id"
     t.integer "show_id"
